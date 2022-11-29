@@ -20,7 +20,7 @@ class NoteController extends Controller
         /*$userId= Auth::id();*/
 
 
-        $notes=Note::where('user_id', Auth::id())->latest("updated_at")->get();
+        $notes=Note::where('user_id', Auth::id())->latest("updated_at")->paginate(5);
 
       return view('notes.index')->with('notes',$notes);
         
@@ -34,6 +34,7 @@ class NoteController extends Controller
     public function create()
     {
         //
+        return view('notes.create');
     }
 
     /**
