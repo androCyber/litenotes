@@ -49,6 +49,24 @@ class NoteController extends Controller
         $request->validate(["title"=>"required|max:120",
                             "text"=>"required"
     ]);
+
+        /*$note=new Note([
+            'user_id'=> Auth::id(),
+            'title'=>$request -> title,
+            'text'=> $request-> text
+        ]);
+
+        $note->save();*/
+
+
+        Note::create([
+            'user_id'=> Auth::id(),
+            'title'=>$request -> title,
+            'text'=> $request-> text
+        ]);
+
+        return to_route('notes.index');
+
     }
         
 
@@ -60,7 +78,9 @@ class NoteController extends Controller
      */
     public function show($id)
     {
-        //
+       $note = Note::where('id',$id)->where('user_id',Auth::id())->firstOrFail();
+       return view('notes.show')->with('note',$note);
+
     }
 
     /**
