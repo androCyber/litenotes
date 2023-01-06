@@ -45,8 +45,12 @@ class NoteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request);
+        $request->validate(["title"=>"required|max:120",
+                            "text"=>"required"
+    ]);
     }
+        
 
     /**
      * Display the specified resource.
