@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NoteController;
+use App\Http\Controllers\TrashedNoteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,5 +25,7 @@ Route::get('/dashboard', function () {
 
 
 Route::resource('/notes',NoteController::class)->middleware(['auth', 'verified']);
+
+Route::get('/trashed',[TrashedNoteController::class,'index'])->middleware('auth')->name('trashed.index');
 
 require __DIR__.'/auth.php';
