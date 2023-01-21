@@ -13,4 +13,9 @@ class Note extends Model
     public function getRouteKeyname(){
         return 'uuid';
     }
+
+    public function user(){
+
+        return $this->belongsTo(User::class);
+    }
 }
