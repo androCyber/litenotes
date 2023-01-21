@@ -64,7 +64,7 @@ class NoteController extends Controller
         $note->save();*/
 
 
-       Auth::user()->notes->create([
+       Auth::user()->notes()->create([
             'uuid' => Str::uuid(),
             'title'=>$request -> title,
             'text'=> $request-> text
@@ -149,6 +149,6 @@ class NoteController extends Controller
          }
          $note->delete();
 
-         return to_route('notes.index')->with('success', 'Note Deleted Successfully');;
+         return to_route('notes.index')->with('success', 'Note Moved to Trash');;
     }
 }
