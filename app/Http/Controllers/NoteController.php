@@ -130,7 +130,7 @@ class NoteController extends Controller
         'text'=>$request->text,
         
 ]);
-     return to_route('notes.show', $note);
+     return to_route('notes.show', $note)->with('success', 'Note Update Successfully');
     }
 
     /**
@@ -147,6 +147,6 @@ class NoteController extends Controller
          }
          $note->delete();
 
-         return to_route('notes.index');
+         return to_route('notes.index')->with('success', 'Note Deleted Successfully');;
     }
 }
